@@ -1,0 +1,14 @@
+const express = require('express');
+const routes = require('./api/routes/productRoute.js');
+const app = express();
+const port = 3000;
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+routes(app);
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`)
+})
