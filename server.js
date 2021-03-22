@@ -8,8 +8,12 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// mySQLRoutes(app);
-mongoRoutes(app);
+mySQLRoutes(app);
+// mongoRoutes(app);
+
+app.get('/', (req, res) => {
+  res.send('hello');
+});
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
