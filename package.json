@@ -18,8 +18,15 @@
   },
   "homepage": "https://github.com/Titan-Scouts/products#readme",
   "dependencies": {
+    "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
+    "csvtojson": "^2.0.10",
     "express": "^4.17.1",
-    "nodemon": "^2.0.7"
+    "mongodb": "^3.6.5",
+    "mongoose": "^5.12.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.7",
+    "rethinkdb": "^2.4.2",
+    "thinky": "^2.3.9"
   }
 }
