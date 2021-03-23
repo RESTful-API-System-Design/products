@@ -22,7 +22,6 @@ client.connect(function (err) {
       }
       styles.find().forEach(style => {
         console.log(style.style_id);
-        let array = []
         photos.find({style_id: style.style_id})
           .project({_id: 0, id: 0, style_id: 0})
           .toArray()
