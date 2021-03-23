@@ -12,7 +12,7 @@ client.connect(function (err) {
 
   const db = client.db(dbName);
 
-  db.collection('styles', (err, styles) => {
+  db.collection('styles2', (err, styles) => {
     db.collection('skus', (err, skus) => {
       styles.find().forEach(style => {
         console.log(style.style_id)
@@ -30,7 +30,7 @@ client.connect(function (err) {
             }
           });
         })
-      });1
+      });
     });
   });
 });
