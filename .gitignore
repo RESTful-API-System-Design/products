@@ -1,6 +1,8 @@
 rethinkdb_data/
 data/
 package-lock.json
+newrelic.js
+newrelic_agent.log
 
 # Logs
 logs
