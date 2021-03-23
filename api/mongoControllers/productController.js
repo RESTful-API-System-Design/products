@@ -7,7 +7,7 @@ const dbName = 'products';
 module.exports = {
 
   products: (req, res) => {
-    const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+    const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: false });
     client.connect((err) => {
 
       if (err) {
@@ -35,7 +35,7 @@ module.exports = {
   },
 
   product: (req, res) => {
-    const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+    const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: false });
     client.connect((err) => {
 
       if (err) {
@@ -77,7 +77,7 @@ module.exports = {
   },
 
   styles: (req, res) => {
-    const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+    const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: false });
     client.connect((err) => {
 
       if (err) {
@@ -95,21 +95,22 @@ module.exports = {
           .project({_id: 0, productId: 0})
           .toArray()
           .then((styles) => {
-            styles.forEach((style) => {
-
-              style.sale_price = style.sale_price === 'null'? null : style.sale_price;
-              style.photos = style.photos? style.photos : [{url: null, thumbnail_url: null}];
-              if (style.skus) {
-                let skuObj = {};
-                style.skus.forEach((sku) => {
-                  skuObj[sku.id] = {size: sku.size, quantity: sku.quantity};
-                })
-                style.skus = skuObj;
-              } else {
-                style.skus = {};
-              }
-            });
             res.send({product_id: req.params.product_id, results: styles});
+            // styles.forEach((style) => {
+
+            //   style.sale_price = style.sale_price === 'null'? null : style.sale_price;
+            //   style.photos = style.photos? style.photos : [{url: null, thumbnail_url: null}];
+              // if (style.skus) {
+              //   let skuObj = {};
+              //   style.skus.forEach((sku) => {
+              //     skuObj[sku.id] = {size: sku.size, quantity: sku.quantity};
+              //   })
+              //   style.skus = skuObj;
+              // } else {
+              //   style.skus = {};
+              // }
+            // });
+            // res.send({product_id: req.params.product_id, results: styles});
             // db.collection('photos', (err, photos) => {
             //   if (err) {
             //     res.sendStatus(418);
@@ -144,7 +145,7 @@ module.exports = {
   },
 
   related: (req, res) => {
-    const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+    const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: false });
     client.connect((err) => {
 
       if (err) {
