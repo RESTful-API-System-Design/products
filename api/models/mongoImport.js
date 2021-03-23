@@ -1,6 +1,6 @@
 // mongoimport --db products --collection products --type csv --headerline --file "/Users/adnannoori/sdc/products/data/product.csv"
 
-// mongoimport --db products --collection styles --type csv --headerline --file "./data/styles.csv"
+// mongoimport --db products --collection styles2 --type csv --headerline --file "./data/styles.csv"
 
 // mongoimport --db products --collection features --type csv --headerline --file "/Users/adnannoori/sdc/products/data/features.csv"
 
@@ -10,8 +10,8 @@
 
 // mongoimport --db products --collection photos --type csv --headerline --file "./data/photos.csv"
 
-// db.styles.updateMany( {}, { $rename: { "id": "style_id" } } )
-// db.styles.createIndex({"style_id": 1})
+// db.styles2.updateMany( {}, { $rename: { "id": "style_id" } } )
+// db.styles2.createIndex({"style_id": 1})
 // db.styles.dropIndex({"styleId": 1})
 // db.styles.getIndexes()
 
