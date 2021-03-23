@@ -1,21 +1,21 @@
 // mongoimport --db products --collection products --type csv --headerline --file "/Users/adnannoori/sdc/products/data/product.csv"
 
-// mongoimport --db products --collection styles --type csv --headerline --file "/Users/adnannoori/sdc/products/data/styles.csv"
+// mongoimport --db products --collection styles --type csv --headerline --file "./data/styles.csv"
 
 // mongoimport --db products --collection features --type csv --headerline --file "/Users/adnannoori/sdc/products/data/features.csv"
 
-// mongoimport --db products --collection related --type csv --headerline --file "/Users/adnannoori/sdc/products/data/related.csv"
+// mongoimport --db products --collection related --type csv --headerline --file "./data/related.csv"
 
-// mongoimport --db products --collection skus --type csv --headerline --file "/Users/adnannoori/sdc/products/data/skus.csv"
+// mongoimport --db products --collection skus --type csv --headerline --file "./data/skus.csv"
 
-// mongoimport --db products --collection photos --type csv --headerline --file "/Users/adnannoori/sdc/products/data/photos.csv"
+// mongoimport --db products --collection photos --type csv --headerline --file "./data/photos.csv"
 
-// styles.updateMany( {}, { $rename: { "default_style": "default?" } } )
+// db.styles.updateMany( {}, { $rename: { "id": "style_id" } } )
 // db.styles.createIndex({"style_id": 1})
 // db.styles.dropIndex({"styleId": 1})
 // db.styles.getIndexes()
 
-//db.photos.createIndex({"style_id": 1})
+// db.photos.createIndex({"style_id": 1})
 
 // db.skus.createIndex({"styleId": 1})
 // db.products.createIndex({"id": 1})
@@ -83,4 +83,3 @@ db.once('open', function() {
       console.log('done')
     });
 });
-
