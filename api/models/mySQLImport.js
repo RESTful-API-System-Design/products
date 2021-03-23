@@ -37,7 +37,7 @@ fsp.readFile('data/productTest.csv')
 // default_style VARCHAR(1)
 // );
 
-// LOAD DATA LOCAL INFILE '/Users/adnannoori/sdc/products/data/styles.csv'
+// LOAD DATA LOCAL INFILE './products/data/styles.csv'
 // INTO TABLE styles
 // FIELDS TERMINATED BY ','
 // OPTIONALLY ENCLOSED BY '"'
