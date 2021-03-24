@@ -21,3 +21,5 @@ app.listen(port, () => {
 })
 
 // scp -i ./SDC.pem /Users/adnannoori/sdc/products/data/skus.csv ubuntu@ec2-18-144-47-101.us-west-1.compute.amazonaws.com:./products/data
+
+// sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
