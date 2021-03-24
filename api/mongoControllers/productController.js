@@ -1,9 +1,10 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb://54.193.40.159:27017';
 const dbName = 'products';
-// const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
+const connectionOptions = { poolSize: process.env.MONGO_POOLSIZE || 10 };
+// const client = new MongoClient(url, connectionOptions, { useNewUrlParser: true, useUnifiedTopology: true });
 module.exports = {
 
   products: (req, res) => {
@@ -13,7 +14,7 @@ module.exports = {
       if (err) {
         res.sendStatus(404);
       }
-      assert.equal(null, err);
+      // assert.equal(null, err);
       const db = client.db(dbName);
 
       db.collection('products', (err, products) => {
@@ -41,7 +42,7 @@ module.exports = {
       if (err) {
         res.sendStatus(404);
       }
-      assert.equal(null, err);
+      // assert.equal(null, err);
       const db = client.db(dbName);
 
       db.collection('products', (err, products) => {
@@ -77,25 +78,32 @@ module.exports = {
   },
 
   styles: (req, res) => {
-    const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: false });
+    const client = new MongoClient(url, connectionOptions, { useNewUrlParser: true, useUnifiedTopology: false });
     client.connect((err) => {
 
       if (err) {
+        console.log(err);
         res.sendStatus(404);
       }
-      assert.equal(null, err);
+      // assert.equal(null, err);
       const db = client.db(dbName);
 
       db.collection('styles', (err, styles) => {
         if (err) {
           res.sendStatus(418);
+        } else {
+          styles.find({productId: parseInt(req.params.product_id)})
+            .project({_id: 0, productId: 0})
+            .toArray()
+            .then((styles) => {
+              res.send({product_id: req.params.product_id, results: styles});
+            })
+            .catch((err) => {
+              res.sendStatus(418);
+            });
         }
+      })
 
-        styles.find({productId: parseInt(req.params.product_id)})
-          .project({_id: 0, productId: 0})
-          .toArray()
-          .then((styles) => {
-            res.send({product_id: req.params.product_id, results: styles});
             // styles.forEach((style) => {
 
             //   style.sale_price = style.sale_price === 'null'? null : style.sale_price;
@@ -136,11 +144,8 @@ module.exports = {
             //       res.sendStatus(418);
             //     })
             // });
-          })
-          .catch((err) => {
-            res.sendStatus(418);
-          })
-      });
+          //})
+      //});
     });
   },
 
@@ -151,7 +156,7 @@ module.exports = {
       if (err) {
         res.sendStatus(404);
       }
-      assert.equal(null, err);
+      // assert.equal(null, err);
       const db = client.db(dbName);
 
       db.collection('related', (err, related) => {
