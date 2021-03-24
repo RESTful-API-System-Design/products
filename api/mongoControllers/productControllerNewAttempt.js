@@ -1,7 +1,7 @@
 const { MongoClient } = require("mongodb");
 const assert = require('assert');
 
-const uri = 'mongodb://localhost:27017/products';
+const uri = 'mongodb://54.193.40.159:27017/products';
 module.exports = {
 
   products: (req, res) => {
