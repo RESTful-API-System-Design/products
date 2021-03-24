@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 // mongoose.connect('mongodb://54.193.40.159:27017/products', {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connect('mongodb://localhost:27017/products', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://54.193.40.159:27017/products', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const productSchema = new mongoose.Schema({
   name: String,
