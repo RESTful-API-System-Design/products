@@ -22,7 +22,7 @@ client.connect(function (err) {
           }
         });
       }
-      if (!style.photos) {
+      if (!style.photos.length) {
         styles.update({style_id: style.style_id}, {
           $set: {
             photos: [{'url': null, 'thumbnail_url': null}]
