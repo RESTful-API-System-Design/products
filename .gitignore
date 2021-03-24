@@ -3,6 +3,7 @@ data/
 package-lock.json
 newrelic.js
 newrelic_agent.log
+test.js
 
 # Logs
 logs
