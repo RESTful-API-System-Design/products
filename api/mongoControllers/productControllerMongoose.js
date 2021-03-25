@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-// mongoose.connect('mongodb://54.193.40.159:27017/products', {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connect('mongodb://54.193.40.159:27017/products', {useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connect('mongodb://localhost:27017/products', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://13.57.219.89:27017/products', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const productSchema = new mongoose.Schema({
   name: String,
@@ -25,11 +25,11 @@ const relatedSchema = new mongoose.Schema({
   id: Number,
   current_product_id: Number,
   related_product_id: Number
-})
+});
 
 const Product = mongoose.model('products', productSchema);
 const Styles = mongoose.model('styles', stylesSchema);
-const Related = mongoose.model('related', relatedSchema);
+const Related = mongoose.model('relates', relatedSchema);
 
 module.exports = {
 
@@ -65,12 +65,17 @@ module.exports = {
   },
 
   related: (req, res) => {
-    Related.find({ current_product_id: 500 })
+
+    Related.find({ current_product_id: parseInt(req.params.product_id) })
       .then((relatedItems) => {
-        res.send(relatedItems);
+        res.send(
+          relatedItems.map((item) => {
+            return item.related_product_id
+          })
+        );
       })
       .catch((err) => {
         res.sendStatus(404);
-      })
+      });
   }
-}
+};
