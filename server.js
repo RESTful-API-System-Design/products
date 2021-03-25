@@ -4,7 +4,7 @@ const mongoRoutes = require('./api/routes/mongoRoute.js');
 const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
-require('newrelic');
+// require('newrelic');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -16,8 +16,8 @@ app.get('/', (req, res) => {
   res.send('hello');
 });
 
-app.get('loaderio-34d53e0a16f3b0376dd16b6db07fb425/', (req, res) => {
-  res.send('./loaderio.txt');
+app.get('/loaderio-34d53e0a16f3b0376dd16b6db07fb425/', (req, res) => {
+  res.sendFile(__dirname + '/loaderio.txt');
 })
 
 app.listen(port, () => {
