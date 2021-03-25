@@ -4,7 +4,7 @@ const mongoRoutes = require('./api/routes/mongoRoute.js');
 const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
-// require('newrelic');
+require('newrelic');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
