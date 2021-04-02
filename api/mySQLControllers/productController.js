@@ -7,7 +7,7 @@ module.exports = {
     const connection = mysql.createConnection(connect);
     connection.connect((err) => {
       if (err) {
-        res.sendStatus(418);
+        res.sendStatus(502);
         res.end();
         connection.end();
       } else {
@@ -30,7 +30,7 @@ module.exports = {
     const connection = mysql.createConnection(connect);
     connection.connect((err) => {
       if (err) {
-        res.sendStatus(418);
+        res.sendStatus(502);
         res.end();
         connection.end();
       } else {
@@ -71,7 +71,7 @@ module.exports = {
     const connection = mysql.createConnection(connect);
     connection.connect((err) => {
       if (err) {
-        res.sendStatus(418);
+        res.sendStatus(502);
         res.end();
         connection.end();
       } else {
@@ -115,7 +115,7 @@ module.exports = {
     const connection = mysql.createConnection(connect);
     connection.connect((err) => {
       if (err) {
-        res.sendStatus(418);
+        res.sendStatus(502);
         res.end();
         connection.end();
       } else {
