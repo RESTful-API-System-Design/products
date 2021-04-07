@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost:27017/products', {useNewUrlParser: true, useUnifiedTopology: true});
-const DB_IP = require('/config.js');
-mongoose.connect(`mongodb://${DB_IP}/products`, {useNewUrlParser: true, useUnifiedTopology: true})
-  .catch((error) => {
-    console.log(error);
-  })
+mongoose.connect('mongodb://localhost:27017/products', {useNewUrlParser: true, useUnifiedTopology: true});
+// const DB_IP = require('/config.js');
+// mongoose.connect(`mongodb://${DB_IP}/products`, {useNewUrlParser: true, useUnifiedTopology: true})
+//   .catch((error) => {
+//     console.log(error);
+//   })
 
 
 const productSchema = new mongoose.Schema({
@@ -39,7 +39,13 @@ const Related = mongoose.model('relates', relatedSchema);
 module.exports = {
 
   products: (req, res) => {
-    Product.find({}).select({_id: 0, features: 0})
+    console.log(req.query)
+    const page = req.query.page ? parseInt(req.query.page) : 1;
+    const numberOfProducts = req.query.count ? parseInt(req.query.count) : 5;
+    console.log(page, numberOfProducts)
+    Product.find({
+      id : { $gte :  page * 5 - 4, $lte :  page * 5 - 5 + numberOfProducts},
+    }).select({_id: 0, features: 0})
     .then((products) => {
       res.send(products)
     })
