@@ -99,6 +99,7 @@ Parameters
 
 Response
 
+```yaml
 {
     "product_id": "1",
     "results": [
@@ -166,6 +167,7 @@ Response
     },
   // ...
 }
+```
 
 ### GET /products/:product_id/related
 
