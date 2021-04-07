@@ -27,6 +27,7 @@ Parameters
 
 Response:
 
+```yaml
 [
   {
         "id": 1,
@@ -54,7 +55,7 @@ Response:
     },
     // ...
 ]
-
+```
 
 ### GET /products/:product_id
 
@@ -66,6 +67,7 @@ Parameters
 
 Response
 
+```yaml
 {
     "id": 11,
     "name": "Air Minis 250",
@@ -85,6 +87,7 @@ Response
     // ...
     ],
 }
+```
 
 ### GET /products/:product_id/styles
 
@@ -174,9 +177,11 @@ Parameters
 
 Response
 
+```yaml
 [
   2,
   3,
   8,
   7
 ],
+```
