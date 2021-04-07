@@ -4,7 +4,7 @@ Fanghorn Products is a RESTful api that serves product data.
 
 ## Motivation
 
-The goal of this project was to redesign an existing legacy api server. The server was seeing higher server loads, which it wasn't capable of handling. Database migration and horizontal scaling was necessary to improve performance.
+The goal of this project was to redesign an existing legacy api server. The server was seeing server loads at which it wasn't capable of handling. Database migration and horizontal scaling was implemeted to improve performance.
 
 ## Tech/framework used
 
