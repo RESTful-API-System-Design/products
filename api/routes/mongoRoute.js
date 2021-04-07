@@ -1,6 +1,5 @@
 // const productController = require('../mongoControllers/productController.js')
 const productController = require('../mongoControllers/productControllerMongoose.js')
-// const productController = require('../mongoControllers/productControllerNewAttempt.js')
 
 module.exports = (app) => {
 

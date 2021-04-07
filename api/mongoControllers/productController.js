@@ -1,10 +1,10 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
+const DB_IP = require('/config.js');
 
-const url = 'mongodb://54.193.40.159:27017';
+const url = `mongodb://${DB_IP}:27017`;
 const dbName = 'products';
 const connectionOptions = { poolSize: process.env.MONGO_POOLSIZE || 10 };
-// const client = new MongoClient(url, connectionOptions, { useNewUrlParser: true, useUnifiedTopology: true });
 module.exports = {
 
   products: (req, res) => {
@@ -12,14 +12,14 @@ module.exports = {
     client.connect((err) => {
 
       if (err) {
-        res.sendStatus(404);
+        res.sendStatus(500);
       }
       // assert.equal(null, err);
       const db = client.db(dbName);
 
       db.collection('products', (err, products) => {
         if (err) {
-          res.sendStatus(418)
+          res.sendStatus(502)
           res.send(err);
         }
         products.find()
@@ -40,7 +40,7 @@ module.exports = {
     client.connect((err) => {
 
       if (err) {
-        res.sendStatus(404);
+        res.sendStatus(500);
       }
       // assert.equal(null, err);
       const db = client.db(dbName);
@@ -48,7 +48,7 @@ module.exports = {
       db.collection('products', (err, products) => {
 
         if (err) {
-          res.sendStatus(418);
+          res.sendStatus(502);
         }
 
         products.findOne({id: parseInt(req.params.product_id)}, {projection: {_id: 0}})
@@ -83,14 +83,13 @@ module.exports = {
 
       if (err) {
         console.log(err);
-        res.sendStatus(404);
+        res.sendStatus(500);
       }
-      // assert.equal(null, err);
       const db = client.db(dbName);
 
       db.collection('styles', (err, styles) => {
         if (err) {
-          res.sendStatus(418);
+          res.sendStatus(502);
         } else {
           styles.find({productId: parseInt(req.params.product_id)})
             .project({_id: 0, productId: 0})
@@ -99,7 +98,7 @@ module.exports = {
               res.send({product_id: req.params.product_id, results: styles});
             })
             .catch((err) => {
-              res.sendStatus(418);
+              res.sendStatus(404);
             });
         }
       })
@@ -154,14 +153,14 @@ module.exports = {
     client.connect((err) => {
 
       if (err) {
-        res.sendStatus(404);
+        res.sendStatus(500);
       }
       // assert.equal(null, err);
       const db = client.db(dbName);
 
       db.collection('related', (err, related) => {
         if (err) {
-          res.sendStatus(418)
+          res.sendStatus(502)
         }
 
         related.find({current_product_id: parseInt(req.params.product_id)})

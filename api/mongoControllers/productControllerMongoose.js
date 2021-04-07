@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost:27017/products', {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connect('mongodb://13.57.219.89:27017/products', {useNewUrlParser: true, useUnifiedTopology: true});
+const DB_IP = require('/config.js');
+mongoose.connect(`mongodb://${DB_IP}/products`, {useNewUrlParser: true, useUnifiedTopology: true})
+  .catch((error) => {
+    console.log(error);
+  })
+
 
 const productSchema = new mongoose.Schema({
   name: String,
