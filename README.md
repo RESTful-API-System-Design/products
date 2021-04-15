@@ -11,7 +11,6 @@ The goal of this project was to redesign an existing legacy api server. The serv
 Built with
 * Node
 * MongoDB
-* Mongoose
 * Express
 
 ## Routes
